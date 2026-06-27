@@ -1,0 +1,3 @@
+-- Write your query below
+SELECT customer_id, customer_name FROM customers WHERE EXISTS (SELECT 1 FROM orders WHERE orders.customer_id = customers.customer_id and product_name = 'A') AND EXISTS (SELECT 1 FROM orders WHERE orders.customer_id = customers.customer_id and product_name = 'B') AND NOT EXISTS 
+(SELECT 1 FROM orders where orders.customer_id = customers.customer_id and product_name = 'C') ORDER BY customer_name;
